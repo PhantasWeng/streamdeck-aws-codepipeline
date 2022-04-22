@@ -1,5 +1,6 @@
 ![preview-default](./doc/preview-default.png)
 # Stream Deck - AWS CodePipeline
+Stream Deck Plugin - With this plugin, you can simply click a button to get the AWS CodePipeline status.
 
 ## Button Status
 Status | Screenchot
