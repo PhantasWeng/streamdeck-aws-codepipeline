@@ -1,0 +1,39 @@
+{
+  "Actions": [
+    {
+      "Icon": "assets/action",
+      "Name": "AWS CodePipeline",
+      "States": [
+        {
+          "Image": "assets/default"
+        }
+      ],
+      "Tooltip": "Get AWS CodePipeline Status",
+      "UUID": "tw.phantas.aws-codepipeline-status.action"
+    }
+  ],
+  "SDKVersion": 2,
+  "Author": "Phantas Weng",
+  "CodePath": "index.html",
+  "PropertyInspectorPath": "pi/index.html",
+  "Description": "Get AWS CodePipeline Status",
+  "Name": "AWS CodePipeline",
+  "Category": "AWS CodePipeline",
+  "CategoryIcon": "assets/category",
+  "Icon": "assets/default",
+  "URL": "https://github.com/PhantasWeng/streamdeck-aws-codepipeline",
+  "Version": "1.0.0",
+  "OS": [
+    {
+      "Platform": "mac",
+      "MinimumVersion": "10.11"
+    },
+    {
+      "Platform": "windows",
+      "MinimumVersion": "10"
+    }
+  ],
+  "Software": {
+    "MinimumVersion": "4.1"
+  }
+}

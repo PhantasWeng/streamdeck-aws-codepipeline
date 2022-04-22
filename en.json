@@ -1,0 +1,15 @@
+{
+  "Description": "Get AWS CodePipeline Status",
+  "Name": "AWS CodePipeline",
+  "Category": "AWS CodePipeline",
+  "tw.phantas.aws-codepipeline-status.action": {
+    "Name": "Get Status",
+    "Tooltip": "tw.phantas.aws-codepipeline-status"
+  },
+  "Localization": {
+    "More info": "More info",
+    "Message": "Message",
+    "Click Me": "Click Me",
+    "Button": "Button"
+  }
+}

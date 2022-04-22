@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name=viewport
+    content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,minimal-ui,viewport-fit=cover">
+  <meta name=apple-mobile-web-app-capable content=yes>
+  <meta name=apple-mobile-web-app-status-bar-style content=black>
+  <title>tw.phantas.aws-codepipeline-status Property Inspector</title>
+  <link rel="stylesheet" href="css/sdpi.css">
+</head>
+
+<body>
+  <div class="sdpi-wrapper">
+
+    <!-- DROP HTML-STUFF BELOW -->
+
+    <!--
+      Here we just copied a couple of elements from the PISamples example, which contains
+      a huge collection pre-made HTML-elements for you to use.
+      Important here is (if you plan to communicate from the Property Inspector to the plugin without
+      further programming), that you add an 'id' to an element's control.
+      This will get the 'key', which is sent to the plugin (or settings), along with the value of
+      the control.
+    -->
+    <div class="sdpi-item">
+      <div class="sdpi-item-label">Caution</div>
+      <p>This Plugin will response status in title value. Set title field will cause to not display response.</p>
+    </div>
+    <div class="sdpi-heading">Code Pipeline</div>
+    <div class="sdpi-item">
+      <div class="sdpi-item-label">Display Name</div>
+      <input id="pipelineName" class="sdpi-item-value" type="text" value="" required />
+    </div>
+    <div class="sdpi-item">
+      <div class="sdpi-item-label">Pipeline</div>
+      <input id="pipelineId" class="sdpi-item-value" type="text" value="" required />
+    </div>
+    <div class="sdpi-item" id="select_single">
+      <div class="sdpi-item-label">Select</div>
+      <select class="sdpi-item-value select" id="pipelineStage">
+        <option value="all">All</option>
+        <option value="source">Source</option>
+        <option value="build">Build</option>
+        <option value="deploy">Deploy</option>
+      </select>
+    </div>
+    <div class="sdpi-heading">AWS Credentials</div>
+    <div class="sdpi-item">
+      <div class="sdpi-item-label">Access Key Id</div>
+      <input id="accessKeyId" class="sdpi-item-value" type="text" value="" required />
+    </div>
+    <div class="sdpi-item">
+      <div class="sdpi-item-label">Secret Access Key</div>
+      <input id="secretAccessKey" class="sdpi-item-value" type="text" value="" required />
+    </div>
+    <div class="sdpi-item">
+      <div class="sdpi-item-label">Region</div>
+      <input id="regionId" class="sdpi-item-value" type="text" value="" required />
+    </div>
+  </div>
+  <!-- <div class="sdpi-item">
+    <details>
+      <summary>More Info</summary>
+      <p>Access Key Id</p>
+      <p>Secret Access Key</p>
+      <p>Region</p>
+      <p>請參照AWS官方網站來取得你的金鑰</p>
+      <p><a href="#">Click here</a></p>
+    </details>
+  </div> -->
+  <!-- <div class="sdpi-item">
+    <div class="sdpi-item-label">Button</div>
+    <button class="sdpi-item-value" id="clickme" value="Click Me" data-localize="Click me">Click Me</button>
+  </div> -->
+
+
+  <!-- END OF SDPI-WRAPPER -->
+
+  </div>
+
+  <div class="sdpi-info-label hidden" style="top: -1000;" value=""></div>
+  <script src="js/common.js"></script>
+  <script src="js/common_pi.js"></script>
+  <script src="js/index_pi.js"></script>
+</body>
+
+</html>
