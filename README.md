@@ -2,12 +2,19 @@
 # Stream Deck - AWS CodePipeline
 Stream Deck Plugin - With this plugin, you can simply click a button to get the AWS CodePipeline status.
 
+  - [Button Status](#button-status)
+  - [Supported Stage](#supported-stage)
+  - [Install](#install)
+  - [Feature](#feature)
+  - [Setting up](#setting-up)
+  - [CHANGELOG](#changelog)
+
 ## Button Status
-Status | Screenchot
----|---
-Default | ![preview-default](./doc/preview-default.png)
-Fetching | ![preview-fetching](./doc/preview-fetching.png)
-Result | ![preview-result](./doc/preview-result.png)
+| Status   | Screenchot                                      |
+| -------- | ----------------------------------------------- |
+| Default  | ![preview-default](./doc/preview-default.png)   |
+| Fetching | ![preview-fetching](./doc/preview-fetching.png) |
+| Result   | ![preview-result](./doc/preview-result.png)     |
 
 ---
 
@@ -28,10 +35,13 @@ Result | ![preview-result](./doc/preview-result.png)
 - Long Press to open aws codepipeline webpage.
 
 ## Setting up
-Config | Description
----|---
-Pipeline | uuid of code pipeline
-Access Key Id | AWS IAM access key
-Secret Access Key | AWS IAM secret access key
-Region | AWS Region id. `ap-northeast-1`
+| Config            | Description                     |
+| ----------------- | ------------------------------- |
+| Pipeline          | uuid of code pipeline           |
+| Access Key Id     | AWS IAM access key              |
+| Secret Access Key | AWS IAM secret access key       |
+| Region            | AWS Region id. `ap-northeast-1` |
 
+
+## CHANGELOG
+See [CHANGELOG.md](./CHANGELOG.md)

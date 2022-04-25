@@ -55,9 +55,14 @@
       <div class="sdpi-item-label">Secret Access Key</div>
       <input id="secretAccessKey" class="sdpi-item-value" type="text" value="" required />
     </div>
-    <div class="sdpi-item">
+    <!-- <div class="sdpi-item">
       <div class="sdpi-item-label">Region</div>
       <input id="regionId" class="sdpi-item-value" type="text" value="" required />
+    </div> -->
+    <div class="sdpi-item" id="select_single">
+      <div class="sdpi-item-label">Region</div>
+      <select class="sdpi-item-value select" id="regionId">
+      </select>
     </div>
   </div>
   <!-- <div class="sdpi-item">
@@ -81,6 +86,8 @@
   </div>
 
   <div class="sdpi-info-label hidden" style="top: -1000;" value=""></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aws-sdk/2.1119.0/aws-sdk.min.js" integrity="sha512-m485HaWlvDQFzqGDHQGXUlqmypssaICQ+/oga6TVxYCUrztIudbOCBIyH5yJTPQGMqGDzW4aMn0ciHki1XCdKQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="js/constants.js"></script>
   <script src="js/common.js"></script>
   <script src="js/common_pi.js"></script>
   <script src="js/index_pi.js"></script>

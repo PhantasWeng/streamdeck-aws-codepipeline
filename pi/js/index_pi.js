@@ -67,7 +67,17 @@ $SD.on('connected', (jsn) => {
      *
      * const foundObject = Utils.getProp(JSON-OBJECT, 'path.to.target', defaultValueIfNotFound)
      */
-
+    for (const group of Object.keys(regionsList)) {
+        const child = document.createElement('optgroup')
+        child.label = group
+        document.querySelector('#regionId').appendChild(child)
+        for (const region of Object.keys(regionsList[group])) {
+            const child = document.createElement('option')
+            child.innerHTML = `${regionsList[group][region]}: ${region}`
+            child.value = regionsList[group][region]
+            document.querySelector(`optgroup[label=${group}]`).appendChild(child)
+        }
+    }
     settings = Utils.getProp(jsn, 'actionInfo.payload.settings', false);
     if (settings) {
         updateUI(settings);
