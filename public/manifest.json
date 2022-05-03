@@ -1,0 +1,42 @@
+{
+  "Actions": [
+    {
+      "Icon": "icons/actionImage",
+      "Name": "CodePipeline",
+      "PropertyInspectorPath": "pi.html",
+      "States": [
+        {
+          "Image": "icons/keyIcon",
+          "TitleAlignment": "bottom",
+          "FontSize": "9"
+        }
+      ],
+      "Tooltip": "Get CodePipeline Status",
+      "SupportedInMultiActions": true,
+      "UUID": "tw.phantas.aws.codepipeline"
+    }
+  ],
+  "SDKVersion": 2,
+  "Author": "Phantas Weng",
+  "CodePath": "plugin.html",
+  "Category": "AWS",
+  "CategoryIcon": "icons/category",
+  "Name": "AWS",
+  "Description": "AWS SDK Plugin for Stream Deck",
+  "Icon": "icons/plugin/plugin",
+  "URL": "https://github.com/PhantasWeng/streamdeck-vue-template",
+  "Version": "2.0.0",
+  "OS": [
+    {
+      "Platform": "mac",
+      "MinimumVersion": "10.11"
+    },
+    {
+      "Platform": "windows",
+      "MinimumVersion": "10"
+    }
+  ],
+  "Software": {
+    "MinimumVersion": "4.1"
+  }
+}
