@@ -74,7 +74,7 @@ export default {
       const buttonLongPress = (context) => {
         console.log('buttonLongPress')
         this.buttonLongPressTimeouts.delete(context)
-        this.setBackgroundImage(context)
+        this.toggleBackgroundImage(context)
       }
     }
   },
@@ -85,33 +85,65 @@ export default {
     onButtonShortPress: function (context) {
       this.getPipelineState(context)
     },
-    getPipelineState: function (context) {
+    getPipelineState: async function (context) {
       this.setAWSConfig()
       const codePipeline = new window.AWS.CodePipeline()
       codePipeline.getPipelineState({ name: this.buttons[context].pipelineConfig.name }, (err, data) => {
         if (err) {
           alert(err)
         }
-        console.log('codePipelineState data', data)
+        console.log('codePipelineState response', data)
+        this.setResult(context, data)
       })
+    },
+    setResult: async function (context, data) {
+      console.log('setResult', data)
+
+      const canvas = this.getCanvas(context)
+      const ctx = canvas.getContext('2d')
+      ctx.textAlign = 'center'
+      ctx.textBaseline = 'bottom'
+      const timer = ms => new Promise(resolve => setTimeout(resolve, ms))
+      for (const stage of data.stageStates) {
+        const stageName = stage.stageName
+        const status = stage.latestExecution.status
+        ctx.clearRect(0, 0, 88, 88)
+        ctx.font = '12px sans-serif'
+        ctx.fillStyle = '#fd9207'
+        ctx.fillText(stageName, 44, 44)
+        ctx.fillStyle = '#a7e90b'
+        ctx.fillText(status, 44, 60)
+        this.$SD.setImage(context, canvas.toDataURL())
+        await timer(600)
+      }
+      ctx.clearRect(0, 0, 88, 88)
+      this.toggleBackgroundImage(context)
     },
     scalePreserveAspectRatio: function (imgW, imgH, maxW, maxH) {
       return (Math.min((maxW / imgW), (maxH / imgH)))
     },
-    setBackgroundImage: function (context) {
+    getCanvas: function (context) {
+      let target = document.querySelector(`canvas#${context}`)
+      if (!target) {
+        const canvas = document.createElement('canvas')
+        canvas.id = context
+        canvas.width = 88
+        canvas.height = 88
+        document.body.appendChild(canvas)
+        target = canvas
+      }
+      return target
+    },
+    toggleBackgroundImage: function (context) {
       this.buttons[context].status = !this.buttons[context].status
-      const canvas = document.createElement('canvas')
-      canvas.id = context
-      document.body.appendChild(canvas)
-
+      const canvas = this.getCanvas(context)
       const ctx = canvas.getContext('2d')
 
-      canvas.width = 88
-      canvas.height = 88
       const background = new Image()
       const iconOn = './icons/keyIcon-on.png'
-      const iconOff = './icons/keyIcon-off.png'
-      background.src = this.buttons[context].status ? iconOff : iconOn
+      // const iconOff = './icons/keyIcon-off.png'
+      // background.src = this.buttons[context].status ? iconOff : iconOn
+      background.src = iconOn
 
       background.onload = () => {
         const w = 72
