@@ -28,10 +28,20 @@ export default {
         this.$SD.requestSettings(message.context)
         this.buttons[message.context] = {}
         this.$SD.setTitle(message.context, 'CodePipeline')
+
+        // Reset image to default
+        const canvas = this.getCanvas(message.context)
+        const ctx = canvas.getContext('2d')
+        ctx.clearRect(0, 0, 88, 88)
+        this.toggleBackgroundImage(message.context)
       })
 
       this.$SD.on('willDisappear', (message) => {
         console.debug('willDisappear')
+        // Remove Timer to prevent background update image
+        if (this.buttons[message.context].timer) {
+          delete this.buttons[message.context].timer
+        }
       })
 
       this.$SD.on('globalsettings', (globalSettings) => {
@@ -103,19 +113,23 @@ export default {
       const ctx = canvas.getContext('2d')
       ctx.textAlign = 'center'
       ctx.textBaseline = 'bottom'
-      const timer = ms => new Promise(resolve => setTimeout(resolve, ms))
+      this.buttons[context].timer = ms => new Promise(resolve => setTimeout(resolve, ms))
       for (const stage of data.stageStates) {
-        const stageName = stage.stageName
-        const status = stage.latestExecution.status
-        ctx.clearRect(0, 0, 88, 88)
-        ctx.font = '12px sans-serif'
-        ctx.fillStyle = '#fd9207'
-        ctx.fillText(stageName, 44, 44)
-        ctx.fillStyle = '#a7e90b'
-        ctx.fillText(status, 44, 60)
-        this.$SD.setImage(context, canvas.toDataURL())
-        await timer(600)
+        // Only update image when appear
+        if (this.buttons[context].timer) {
+          const stageName = stage.stageName
+          const status = stage.latestExecution.status
+          ctx.clearRect(0, 0, 88, 88)
+          ctx.font = '12px sans-serif'
+          ctx.fillStyle = '#fd9207'
+          ctx.fillText(stageName, 44, 44)
+          ctx.fillStyle = '#a7e90b'
+          ctx.fillText(status, 44, 60)
+          this.$SD.setImage(context, canvas.toDataURL())
+          await this.buttons[context].timer(600)
+        }
       }
+      // Reset to default image
       ctx.clearRect(0, 0, 88, 88)
       this.toggleBackgroundImage(context)
     },
