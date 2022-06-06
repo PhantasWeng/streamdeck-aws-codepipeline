@@ -123,10 +123,10 @@ export default {
       return (Math.min((maxW / imgW), (maxH / imgH)))
     },
     getCanvas: function (context) {
-      let target = document.querySelector(`canvas#${context}`)
+      let target = document.querySelector(`canvas#button-${context}`)
       if (!target) {
         const canvas = document.createElement('canvas')
-        canvas.id = context
+        canvas.id = 'button-' + context
         canvas.width = 88
         canvas.height = 88
         document.body.appendChild(canvas)
