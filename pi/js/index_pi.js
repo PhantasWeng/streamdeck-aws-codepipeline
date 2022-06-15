@@ -51,7 +51,7 @@ $SD.on('connected', (jsn) => {
      * drawing proper highlight-colors or progressbars.
      */
 
-    console.log("connected");
+    console.log("connected", jsn);
     addDynamicStyles($SD.applicationInfo.colors, 'connectSocket');
 
     /**
@@ -188,6 +188,13 @@ $SD.on('piDataChanged', (returnValue) => {
         }
 
     } else {
+        if (returnValue) {
+            if (returnValue.key === 'accessKeyId') {
+                saveGlobalSettings({
+                    [returnValue.key]: returnValue.value
+                })
+            }
+        }
 
         /* SAVE THE VALUE TO SETTINGS */
         saveSettings(returnValue);
@@ -197,6 +204,9 @@ $SD.on('piDataChanged', (returnValue) => {
     }
 });
 
+function saveGlobalSettings (settings) {
+    console.log('saveGlobalSettings', settings)
+}
 /**
  * Below are a bunch of helpers to make your DOM interactive
  * The will cover changes of the most common elements in your DOM
